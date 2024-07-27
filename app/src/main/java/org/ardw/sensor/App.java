@@ -1,10 +1,12 @@
 package org.ardw.sensor;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.awt.event.KeyEvent;
 import java.io.IOException;
 
 public class App extends Application {
@@ -12,6 +14,13 @@ public class App extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("ardw-sensor.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 320, 240);
+
+        scene.setOnKeyPressed(evt -> {
+            if(KeyEvent.VK_ESCAPE == evt.getCode().getCode()) {
+             Platform.exit();
+            }
+        });
+
         stage.setTitle("Hello!");
         stage.setScene(scene);
         stage.show();
