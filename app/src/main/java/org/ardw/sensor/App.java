@@ -12,17 +12,25 @@ import java.io.IOException;
 public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("ardw-sensor.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
+        FXMLLoader loader = new FXMLLoader(App.class.getResource("ardw-sensor.fxml"));
+        Scene scene = new Scene(loader.load());
 
         scene.setOnKeyPressed(evt -> {
-            if(KeyEvent.VK_ESCAPE == evt.getCode().getCode()) {
-             Platform.exit();
+            if (evt.isAltDown() &&
+                    KeyEvent.VK_ESCAPE == evt.getCode().getCode()
+            ) {
+                Platform.exit();
+                System.exit(0);
             }
         });
 
-        stage.setTitle("Hello!");
+        var controller = (Controller) loader.getController();
+        controller.start();
+
+        stage.setTitle("Ardw Sensor FX");
         stage.setScene(scene);
+
+        stage.setFullScreen(true);
         stage.show();
     }
 

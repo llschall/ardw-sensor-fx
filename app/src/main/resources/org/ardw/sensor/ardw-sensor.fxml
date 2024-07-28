@@ -1,32 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.chart.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.AreaChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-<TabPane xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1"
-         fx:controller="org.ardw.sensor.Controller">
-    <Tab text="Untitled Tab">
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="471.0" prefWidth="850.0">
-            <AreaChart fx:id="chartFx" layoutX="24.0" layoutY="29.0" prefHeight="370.0" prefWidth="613.0">
-                <xAxis>
-                    <NumberAxis side="BOTTOM"/>
-                </xAxis>
-                <yAxis>
-                    <NumberAxis side="LEFT"/>
-                </yAxis>
-            </AreaChart>
-        </AnchorPane>
-    </Tab>
-    <Tab>
-        <VBox alignment="CENTER" prefHeight="358.0" prefWidth="594.0" spacing="20.0">
-            <padding>
-                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-            </padding>
-
-            <Label fx:id="welcomeText"/>
-            <Button onAction="#onHelloButtonClick" prefHeight="0.0" prefWidth="54.0" text="Hello!"/>
-        </VBox>
-    </Tab>
-</TabPane>
+<BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="org.ardw.sensor.Controller">
+    <center>
+        <TabPane>
+            <Tab text="Temperature">
+                <AnchorPane>
+                    <BorderPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                                AnchorPane.topAnchor="0.0">
+                        <center>
+                            <VBox BorderPane.alignment="CENTER">
+                                <BorderPane.margin>
+                                    <Insets/>
+                                </BorderPane.margin>
+                                <children>
+                                    <AreaChart fx:id="chartT">
+                                        <xAxis>
+                                            <NumberAxis side="BOTTOM"/>
+                                        </xAxis>
+                                        <yAxis>
+                                            <NumberAxis side="LEFT"/>
+                                        </yAxis>
+                                    </AreaChart>
+                                    <AreaChart fx:id="chartH">
+                                        <xAxis>
+                                            <NumberAxis side="BOTTOM"/>
+                                        </xAxis>
+                                        <yAxis>
+                                            <NumberAxis side="LEFT"/>
+                                        </yAxis>
+                                    </AreaChart>
+                                </children>
+                            </VBox>
+                        </center>
+                        <bottom>
+                            <HBox prefHeight="100.0" BorderPane.alignment="CENTER">
+                                <children>
+                                    <TextArea fx:id="console" prefHeight="200.0"/>
+                                </children>
+                            </HBox>
+                        </bottom>
+                    </BorderPane>
+                </AnchorPane>
+            </Tab>
+        </TabPane>
+    </center>
+</BorderPane>
