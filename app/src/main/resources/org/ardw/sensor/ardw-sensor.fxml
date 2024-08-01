@@ -10,60 +10,61 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-     <BorderPane xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.ardw.sensor.Controller">
-         <center>
-             <VBox BorderPane.alignment="CENTER">
-                 <BorderPane.margin>
-                     <Insets />
-                 </BorderPane.margin>
-                 <children>
-                     <BorderPane>
-                         <center>
-                             <AreaChart fx:id="chartT">
-                                 <xAxis>
-                                     <NumberAxis side="BOTTOM" />
-                                 </xAxis>
-                                 <yAxis>
-                                     <NumberAxis side="LEFT" />
-                                 </yAxis>
-                             </AreaChart>
-                         </center>
-                         <left>
-                             <Label fx:id="labelT" text="22.22" BorderPane.alignment="CENTER">
-                                 <font>
-                                     <Font size="96.0" />
-                                 </font>
-                             </Label>
-                         </left>
-                     </BorderPane>
-                     <BorderPane>
-                         <center>
-                             <AreaChart fx:id="chartH">
-                                 <xAxis>
-                                     <NumberAxis side="BOTTOM" />
-                                 </xAxis>
-                                 <yAxis>
-                                     <NumberAxis side="LEFT" />
-                                 </yAxis>
-                             </AreaChart>
-                         </center>
-                         <left>
-                             <Label fx:id="labelH" text="22.22" BorderPane.alignment="CENTER">
-                                 <font>
-                                     <Font size="96.0" />
-                                 </font>
-                             </Label>
-                         </left>
-                     </BorderPane>
-                 </children>
-             </VBox>
-         </center>
-         <bottom>
-             <HBox prefHeight="100.0" BorderPane.alignment="CENTER">
-                 <children>
-                     <TextArea fx:id="console" prefHeight="200.0" />
-                 </children>
-             </HBox>
-         </bottom>
-     </BorderPane>
+<BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="org.ardw.sensor.Controller">
+    <center>
+        <VBox BorderPane.alignment="CENTER">
+            <BorderPane.margin>
+                <Insets/>
+            </BorderPane.margin>
+            <children>
+                <BorderPane>
+                    <center>
+                        <AreaChart fx:id="chartT">
+                            <xAxis>
+                                <NumberAxis side="BOTTOM"/>
+                            </xAxis>
+                            <yAxis>
+                                <NumberAxis side="LEFT"/>
+                            </yAxis>
+                        </AreaChart>
+                    </center>
+                    <left>
+                        <Label fx:id="labelT" text="22.22" BorderPane.alignment="CENTER">
+                            <font>
+                                <Font size="96.0"/>
+                            </font>
+                        </Label>
+                    </left>
+                </BorderPane>
+                <BorderPane>
+                    <center>
+                        <AreaChart fx:id="chartH">
+                            <xAxis>
+                                <NumberAxis side="BOTTOM"/>
+                            </xAxis>
+                            <yAxis>
+                                <NumberAxis side="LEFT"/>
+                            </yAxis>
+                        </AreaChart>
+                    </center>
+                    <left>
+                        <Label fx:id="labelH" text="22.22" BorderPane.alignment="CENTER">
+                            <font>
+                                <Font size="96.0"/>
+                            </font>
+                        </Label>
+                    </left>
+                </BorderPane>
+            </children>
+        </VBox>
+    </center>
+    <bottom>
+        <HBox prefHeight="100.0" BorderPane.alignment="CENTER">
+            <children>
+                <TextArea fx:id="console" prefHeight="200.0"/>
+                <Label fx:id="loopLbl" text="Label"/>
+            </children>
+        </HBox>
+    </bottom>
+</BorderPane>

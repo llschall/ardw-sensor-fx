@@ -11,13 +11,16 @@ import org.llschall.ardwloop.ArdwloopStarter;
 import org.llschall.ardwloop.IArdwProgram;
 import org.llschall.ardwloop.structure.model.ArdwloopModel;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 public class Controller {
 
     @FXML
     AreaChart<Number, Number> chartT, chartH;
 
     @FXML
-    Label labelT, labelH;
+    Label labelT, labelH, loopLbl;
 
     @FXML
     TextArea console;
@@ -26,8 +29,12 @@ public class Controller {
 
     ObservableList<AreaChart.Data<Number, Number>> dataT, dataH, zeroT, zeroH;
 
+    int count;
+
     public void start() {
+        log(LocalDateTime.now().format(DateTimeFormatter.ISO_LOCAL_TIME));
         log("Java version is " + System.getProperty("java.version"));
+
 
         AreaChart.Series<Number, Number> serieT = new AreaChart.Series<>();
         serieT.setName("Temperature");
@@ -85,6 +92,7 @@ public class Controller {
             Measure measure = Measure.measures.remove();
             long time = (measure.timeMs - zero.timeMs) / 1000;
             Platform.runLater(() -> {
+                loopLbl.setText("" + count++);
 
                 labelT.setText("" + measure.temperature);
                 labelH.setText("" + measure.humidity);
