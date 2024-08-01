@@ -30,10 +30,14 @@ public class Controller {
         log("Java version is " + System.getProperty("java.version"));
 
         AreaChart.Series<Number, Number> serieT = new AreaChart.Series<>();
+        serieT.setName("Temperature");
         AreaChart.Series<Number, Number> serieH = new AreaChart.Series<>();
+        serieH.setName("Humidity");
 
         AreaChart.Series<Number, Number> serieTZ = new AreaChart.Series<>();
+        serieTZ.setName("Zero");
         AreaChart.Series<Number, Number> serieHZ = new AreaChart.Series<>();
+        serieHZ.setName("Zero");
 
         dataT = serieT.getData();
         dataH = serieH.getData();
@@ -47,18 +51,23 @@ public class Controller {
         chartH.getData().add(serieH);
         chartH.getData().add(serieHZ);
 
-        NumberAxis yAxis = (NumberAxis) chartT.getYAxis();
-        yAxis.setAutoRanging(false);
-        yAxis.setLowerBound(20);
-        yAxis.setUpperBound(32);
-
-        yAxis.setTickMarkVisible(true);
-        yAxis.setTickUnit(1);
+        setupAxis(chartT, 20, 32, 1);
+        setupAxis(chartH, 30, 90, 2);
 
         IArdwProgram program = new Program();
         ArdwloopModel model = ArdwloopStarter.get().start(program);
 
         new AppThread(this).start();
+    }
+
+    void setupAxis(AreaChart<Number, Number> chart, int min, int max, int tick) {
+        NumberAxis yAxis = (NumberAxis) chart.getYAxis();
+        yAxis.setAutoRanging(false);
+        yAxis.setLowerBound(min);
+        yAxis.setUpperBound(max);
+
+        yAxis.setTickMarkVisible(true);
+        yAxis.setTickUnit(tick);
     }
 
     void process() {
