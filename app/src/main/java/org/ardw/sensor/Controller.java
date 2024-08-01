@@ -11,6 +11,7 @@ import org.llschall.ardwloop.ArdwloopStarter;
 import org.llschall.ardwloop.IArdwProgram;
 import org.llschall.ardwloop.structure.model.ArdwloopModel;
 
+import java.lang.management.ManagementFactory;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -32,9 +33,9 @@ public class Controller {
     int count;
 
     public void start() {
-        log(LocalDateTime.now().format(DateTimeFormatter.ISO_LOCAL_TIME));
         log("Java version is " + System.getProperty("java.version"));
-
+        log(LocalDateTime.now().format(DateTimeFormatter.ISO_LOCAL_TIME));
+        log(ManagementFactory.getRuntimeMXBean().getName());
 
         AreaChart.Series<Number, Number> serieT = new AreaChart.Series<>();
         serieT.setName("Temperature");
