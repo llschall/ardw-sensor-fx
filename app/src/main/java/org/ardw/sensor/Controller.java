@@ -80,14 +80,10 @@ public class Controller {
             log("Zero is now.");
             zero = Measure.measures.peek();
         }
-
         while (!Measure.measures.isEmpty()) {
 
             Measure measure = Measure.measures.remove();
-            log("" + measure.temperature);
-
             long time = (measure.timeMs - zero.timeMs) / 1000;
-
             Platform.runLater(() -> {
 
                 labelT.setText("" + measure.temperature);
@@ -98,9 +94,7 @@ public class Controller {
 
                 dataH.add(new AreaChart.Data<>(time, measure.humidity));
                 zeroH.add(new AreaChart.Data<>(time, zero.humidity));
-
             });
-
         }
     }
 
