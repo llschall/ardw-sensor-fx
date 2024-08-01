@@ -34,8 +34,11 @@ public class Controller {
 
         NumberAxis yAxis = (NumberAxis) chartT.getYAxis();
         yAxis.setAutoRanging(false);
-        yAxis.setLowerBound(18);
+        yAxis.setLowerBound(20);
         yAxis.setUpperBound(32);
+
+        yAxis.setTickMarkVisible(true);
+        yAxis.setTickUnit(1);
 
         IArdwProgram program = new Program();
         ArdwloopModel model = ArdwloopStarter.get().start(program);
