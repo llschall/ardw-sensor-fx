@@ -22,9 +22,9 @@ public class Controller {
     @FXML
     TextArea console;
 
-    Long zero = null;
+    Measure zero = null;
 
-    ObservableList<AreaChart.Data<Number, Number>> dataT, dataH;
+    ObservableList<AreaChart.Data<Number, Number>> dataT, dataH, zeroT, zeroH;
 
     public void start() {
         log("Java version is " + System.getProperty("java.version"));
@@ -32,11 +32,20 @@ public class Controller {
         AreaChart.Series<Number, Number> serieT = new AreaChart.Series<>();
         AreaChart.Series<Number, Number> serieH = new AreaChart.Series<>();
 
+        AreaChart.Series<Number, Number> serieTZ = new AreaChart.Series<>();
+        AreaChart.Series<Number, Number> serieHZ = new AreaChart.Series<>();
+
         dataT = serieT.getData();
         dataH = serieH.getData();
 
+        zeroT = serieTZ.getData();
+        zeroH = serieHZ.getData();
+
         chartT.getData().add(serieT);
+        chartT.getData().add(serieTZ);
+
         chartH.getData().add(serieH);
+        chartH.getData().add(serieHZ);
 
         NumberAxis yAxis = (NumberAxis) chartT.getYAxis();
         yAxis.setAutoRanging(false);
@@ -60,7 +69,7 @@ public class Controller {
 
         if (zero == null) {
             log("Zero is now.");
-            zero = System.currentTimeMillis();
+            zero = Measure.measures.peek();
         }
 
         while (!Measure.measures.isEmpty()) {
@@ -68,7 +77,7 @@ public class Controller {
             Measure measure = Measure.measures.remove();
             log("" + measure.temperature);
 
-            long time = (measure.timeMs - zero) / 1000;
+            long time = (measure.timeMs - zero.timeMs) / 1000;
 
             Platform.runLater(() -> {
 
@@ -76,7 +85,11 @@ public class Controller {
                 labelH.setText("" + measure.humidity);
 
                 dataT.add(new AreaChart.Data<>(time, measure.temperature));
+                zeroT.add(new AreaChart.Data<>(time, zero.temperature));
+
                 dataH.add(new AreaChart.Data<>(time, measure.humidity));
+                zeroH.add(new AreaChart.Data<>(time, zero.humidity));
+
             });
 
         }
