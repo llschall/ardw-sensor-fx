@@ -4,8 +4,6 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 
 class Measure {
 
-    final static long ZERO_MS = System.currentTimeMillis();
-
     final static ConcurrentLinkedQueue<Measure> measures = new ConcurrentLinkedQueue<>();
 
     final long timeMs;

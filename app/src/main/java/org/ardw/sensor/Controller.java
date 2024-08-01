@@ -19,9 +19,10 @@ public class Controller {
     @FXML
     Label labelT, labelH;
 
-
     @FXML
     TextArea console;
+
+    Long zero = null;
 
     ObservableList<AreaChart.Data<Number, Number>> dataT, dataH;
 
@@ -52,12 +53,22 @@ public class Controller {
     }
 
     void process() {
+
+        if (Measure.measures.isEmpty()) {
+            return;
+        }
+
+        if (zero == null) {
+            log("Zero is now.");
+            zero = System.currentTimeMillis();
+        }
+
         while (!Measure.measures.isEmpty()) {
 
             Measure measure = Measure.measures.remove();
             log("" + measure.temperature);
 
-            long time = (measure.timeMs - Measure.ZERO_MS) / 1000;
+            long time = (measure.timeMs - zero) / 1000;
 
             Platform.runLater(() -> {
 
