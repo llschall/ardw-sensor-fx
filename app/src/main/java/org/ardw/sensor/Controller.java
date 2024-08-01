@@ -5,6 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.chart.AreaChart;
 import javafx.scene.chart.NumberAxis;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import org.llschall.ardwloop.ArdwloopStarter;
 import org.llschall.ardwloop.IArdwProgram;
@@ -14,6 +15,10 @@ public class Controller {
 
     @FXML
     AreaChart<Number, Number> chartT, chartH;
+
+    @FXML
+    Label labelT, labelH;
+
 
     @FXML
     TextArea console;
@@ -55,6 +60,10 @@ public class Controller {
             long time = (measure.timeMs - Measure.ZERO_MS) / 1000;
 
             Platform.runLater(() -> {
+
+                labelT.setText("" + measure.temperature);
+                labelH.setText("" + measure.humidity);
+
                 dataT.add(new AreaChart.Data<>(time, measure.temperature));
                 dataH.add(new AreaChart.Data<>(time, measure.humidity));
             });
