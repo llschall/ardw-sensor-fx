@@ -14,6 +14,7 @@ import org.llschall.ardwloop.structure.model.ArdwloopModel;
 import java.lang.management.ManagementFactory;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.LinkedList;
 
 public class Controller {
 
@@ -28,7 +29,9 @@ public class Controller {
 
     Measure zero = null;
 
-    ObservableList<AreaChart.Data<Number, Number>> dataT, dataH, zeroT, zeroH;
+    ObservableList<AreaChart.Data<Number, Number>> dataT, dataH, zeroT, zeroH, deltaT, deltaH;
+
+    LinkedList<Measure> list = new LinkedList<>();
 
     int count;
 
@@ -47,17 +50,28 @@ public class Controller {
         AreaChart.Series<Number, Number> serieHZ = new AreaChart.Series<>();
         serieHZ.setName("Zero");
 
+        AreaChart.Series<Number, Number> serieTD = new AreaChart.Series<>();
+        serieTD.setName("Delta");
+        AreaChart.Series<Number, Number> serieHD = new AreaChart.Series<>();
+        serieHD.setName("Delta");
+
+
         dataT = serieT.getData();
         dataH = serieH.getData();
 
         zeroT = serieTZ.getData();
         zeroH = serieHZ.getData();
 
+        deltaT = serieTD.getData();
+        deltaH = serieHD.getData();
+
         chartT.getData().add(serieT);
         chartT.getData().add(serieTZ);
+        chartT.getData().add(serieTD);
 
         chartH.getData().add(serieH);
         chartH.getData().add(serieHZ);
+        chartH.getData().add(serieHD);
 
         setupAxis(chartT, 20, 32, 1);
         setupAxis(chartH, 30, 90, 2);
@@ -91,6 +105,13 @@ public class Controller {
         while (!Measure.measures.isEmpty()) {
 
             Measure measure = Measure.measures.remove();
+            list.add(measure);
+            while (list.size() > 10) {
+                list.remove();
+            }
+
+            Measure delta = list.getLast();
+
             long time = (measure.timeMs - zero.timeMs) / 1000;
             Platform.runLater(() -> {
                 loopLbl.setText("" + count++);
@@ -100,9 +121,11 @@ public class Controller {
 
                 dataT.add(new AreaChart.Data<>(time, measure.temperature));
                 zeroT.add(new AreaChart.Data<>(time, zero.temperature));
+                deltaT.add(new AreaChart.Data<>(time, delta.temperature));
 
                 dataH.add(new AreaChart.Data<>(time, measure.humidity));
                 zeroH.add(new AreaChart.Data<>(time, zero.humidity));
+                deltaH.add(new AreaChart.Data<>(time, delta.humidity));
             });
         }
     }
