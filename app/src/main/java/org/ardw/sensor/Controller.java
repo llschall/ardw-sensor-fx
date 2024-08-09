@@ -22,7 +22,7 @@ public class Controller {
     AreaChart<Number, Number> chartT, chartH;
 
     @FXML
-    Label labelT, labelH, loopLbl;
+    Label labelT, labelH, labelTZ, labelHZ, labelTD, labelHD, loopLbl;
 
     @FXML
     TextArea console;
@@ -101,6 +101,10 @@ public class Controller {
         if (zero == null) {
             log("Zero is now.");
             zero = Measure.measures.peek();
+            Platform.runLater(() -> {
+                labelTZ.setText("" + zero.temperature);
+                labelHZ.setText("" + zero.humidity);
+            });
         }
         while (!Measure.measures.isEmpty()) {
 
@@ -122,10 +126,15 @@ public class Controller {
                 dataT.add(new AreaChart.Data<>(time, measure.temperature));
                 zeroT.add(new AreaChart.Data<>(time, zero.temperature));
                 deltaT.add(new AreaChart.Data<>(time, delta.temperature));
+                float deltaT = delta.temperature - measure.temperature;
+                labelTD.setText("" + deltaT);
 
                 dataH.add(new AreaChart.Data<>(time, measure.humidity));
                 zeroH.add(new AreaChart.Data<>(time, zero.humidity));
                 deltaH.add(new AreaChart.Data<>(time, delta.humidity));
+                float deltaH = delta.humidity - measure.humidity;
+                labelHD.setText("" + deltaH);
+
             });
         }
     }
