@@ -12,6 +12,7 @@ import org.llschall.ardwloop.IArdwProgram;
 import org.llschall.ardwloop.structure.model.ArdwloopModel;
 
 import java.lang.management.ManagementFactory;
+import java.text.DecimalFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.LinkedList;
@@ -109,34 +110,39 @@ public class Controller {
         while (!Measure.measures.isEmpty()) {
 
             Measure measure = Measure.measures.remove();
-            list.add(measure);
-            while (list.size() > 10) {
-                list.remove();
+            list.addFirst(measure);
+            while (list.size() > 1000) {
+                list.removeLast();
             }
 
             Measure delta = list.getLast();
 
             long time = (measure.timeMs - zero.timeMs) / 1000;
             Platform.runLater(() -> {
-                loopLbl.setText("" + count++);
+                loopLbl.setText("#" + count++);
 
-                labelT.setText("" + measure.temperature);
-                labelH.setText("" + measure.humidity);
+                labelT.setText(format(measure.temperature));
+                labelH.setText(format(measure.humidity));
 
                 dataT.add(new AreaChart.Data<>(time, measure.temperature));
                 zeroT.add(new AreaChart.Data<>(time, zero.temperature));
                 deltaT.add(new AreaChart.Data<>(time, delta.temperature));
                 float deltaT = delta.temperature - measure.temperature;
-                labelTD.setText("" + deltaT);
+                labelTD.setText(format(deltaT));
 
                 dataH.add(new AreaChart.Data<>(time, measure.humidity));
                 zeroH.add(new AreaChart.Data<>(time, zero.humidity));
                 deltaH.add(new AreaChart.Data<>(time, delta.humidity));
                 float deltaH = delta.humidity - measure.humidity;
-                labelHD.setText("" + deltaH);
+                labelHD.setText(format(deltaH));
 
             });
         }
+    }
+
+    String format(float f) {
+        DecimalFormat format = new DecimalFormat("#0.0");
+        return format.format(f);
     }
 
     void log(String msg) {
