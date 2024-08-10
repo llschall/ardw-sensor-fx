@@ -125,12 +125,12 @@ public class Controller {
         while (!Measure.measures.isEmpty()) {
 
             Measure measure = Measure.measures.remove();
-            list.addFirst(measure);
+            list.addLast(measure);
             while (list.size() > 1000) {
-                list.removeLast();
+                list.removeFirst();
             }
 
-            Measure delta = list.getLast();
+            Measure delta = list.peek();
 
             long time = (measure.timeMs - zero.timeMs) / 1000;
 
