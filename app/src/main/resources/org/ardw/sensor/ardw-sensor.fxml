@@ -33,17 +33,17 @@
                                     <left>
                                         <VBox BorderPane.alignment="CENTER">
                                             <children>
-                                                <Label fx:id="labelTZ" text="11.11">
+                                                <Label fx:id="labelTZ" text="--.-">
                                                     <font>
                                                         <Font size="48.0" />
                                                     </font>
                                                 </Label>
-                                                <Label fx:id="labelT" text="22.22">
+                                                <Label fx:id="labelT" text="--.-">
                                                     <font>
                                                         <Font size="96.0" />
                                                     </font>
                                                 </Label>
-                                                <Label fx:id="labelTD" text="11.11">
+                                                <Label fx:id="labelTD" text="--.-">
                                                     <font>
                                                         <Font size="48.0" />
                                                     </font>
@@ -66,17 +66,17 @@
                                     <left>
                                         <VBox BorderPane.alignment="CENTER">
                                             <children>
-                                                <Label fx:id="labelHZ" text="11.11">
+                                                <Label fx:id="labelHZ" text="--.-">
                                                     <font>
                                                         <Font size="48.0" />
                                                     </font>
                                                 </Label>
-                                                <Label fx:id="labelH" text="22.22">
+                                                <Label fx:id="labelH" text="--.-">
                                                     <font>
                                                         <Font size="96.0" />
                                                     </font>
                                                 </Label>
-                                                <Label fx:id="labelHD" text="11.11">
+                                                <Label fx:id="labelHD" text="--.-">
                                                     <font>
                                                         <Font size="48.0" />
                                                     </font>
