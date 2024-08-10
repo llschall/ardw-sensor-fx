@@ -12,7 +12,9 @@ import org.llschall.ardwloop.IArdwProgram;
 import org.llschall.ardwloop.structure.model.ArdwloopModel;
 
 import java.lang.management.ManagementFactory;
+import java.text.DateFormat;
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.LinkedList;
@@ -103,7 +105,9 @@ public class Controller {
     void process() {
 
         Platform.runLater(() -> {
-            serialLbl.setText(model.serialMdl.status.get());
+            if (zero == null) {
+                serialLbl.setText(model.serialMdl.status.get());
+            }
         });
 
         if (Measure.measures.isEmpty()) {
@@ -139,6 +143,11 @@ public class Controller {
             }
 
             Platform.runLater(() -> {
+
+                int m = (int) time / 60;
+                int s = (int) time - m * 60;
+                serialLbl.setText(m + "m " + s + "s");
+
                 loopLbl.setText("#" + count++);
 
                 labelT.setText(format(measure.temperature));

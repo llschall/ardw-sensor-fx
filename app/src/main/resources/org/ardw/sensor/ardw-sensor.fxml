@@ -89,10 +89,16 @@
                         </VBox>
                     </center>
                     <bottom>
-                        <Label fx:id="loopLbl" style="-fx-background-color: #999999;" text="Label" BorderPane.alignment="CENTER" />
+                        <Label fx:id="loopLbl" text="Label" BorderPane.alignment="CENTER">
+                     <font>
+                        <Font size="48.0" />
+                     </font></Label>
                     </bottom>
                     <top>
-                        <Label fx:id="serialLbl" style="-fx-background-color: #999999;" text="Label" BorderPane.alignment="CENTER" />
+                        <Label fx:id="serialLbl" text="Label" BorderPane.alignment="CENTER">
+                     <font>
+                        <Font size="48.0" />
+                     </font></Label>
                     </top>
                 </BorderPane>
             </content>
