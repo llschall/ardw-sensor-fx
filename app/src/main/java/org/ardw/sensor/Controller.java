@@ -30,6 +30,8 @@ public class Controller {
 
     Measure zero = null;
 
+    boolean xAutoRanging = false;
+
     ObservableList<AreaChart.Data<Number, Number>> dataT, dataH, zeroT, zeroH, deltaT, deltaH;
 
     LinkedList<Measure> list = new LinkedList<>();
@@ -76,7 +78,7 @@ public class Controller {
         chartH.getData().add(serieHD);
 
         setupAxis(chartT, 20, 32, 1);
-        setupAxis(chartH, 30, 90, 2);
+        setupAxis(chartH, 30, 70, 2);
 
         IArdwProgram program = new Program();
         model = ArdwloopStarter.get().start(program);
@@ -85,6 +87,10 @@ public class Controller {
     }
 
     void setupAxis(AreaChart<Number, Number> chart, int min, int max, int tick) {
+        NumberAxis xAxis = (NumberAxis) chart.getXAxis();
+        xAxis.setAutoRanging(false);
+        xAxis.setUpperBound(99);
+
         NumberAxis yAxis = (NumberAxis) chart.getYAxis();
         yAxis.setAutoRanging(false);
         yAxis.setLowerBound(min);
@@ -108,8 +114,8 @@ public class Controller {
             log("Zero is now.");
             zero = Measure.measures.peek();
             Platform.runLater(() -> {
-                labelTZ.setText("" + zero.temperature);
-                labelHZ.setText("" + zero.humidity);
+                labelTZ.setText(format(zero.temperature));
+                labelHZ.setText(format(zero.humidity));
             });
         }
         while (!Measure.measures.isEmpty()) {
@@ -123,6 +129,15 @@ public class Controller {
             Measure delta = list.getLast();
 
             long time = (measure.timeMs - zero.timeMs) / 1000;
+
+            if (!xAutoRanging && time > 80) {
+                Platform.runLater(() -> {
+                    xAutoRanging = true;
+                    chartT.getXAxis().setAutoRanging(true);
+                    chartH.getXAxis().setAutoRanging(true);
+                });
+            }
+
             Platform.runLater(() -> {
                 loopLbl.setText("#" + count++);
 
