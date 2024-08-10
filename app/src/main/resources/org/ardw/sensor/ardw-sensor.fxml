@@ -33,7 +33,7 @@
                                     <left>
                                         <VBox BorderPane.alignment="CENTER">
                                             <children>
-                                                <Label fx:id="labelTZ" text="--.-">
+                                                <Label fx:id="labelTZ" text="--.-" textFill="#000000b2">
                                                     <font>
                                                         <Font size="48.0" />
                                                     </font>
@@ -43,7 +43,7 @@
                                                         <Font size="96.0" />
                                                     </font>
                                                 </Label>
-                                                <Label fx:id="labelTD" text="--.-">
+                                                <Label fx:id="labelTD" text="--.-" textFill="#000000b2">
                                                     <font>
                                                         <Font size="48.0" />
                                                     </font>
@@ -66,7 +66,7 @@
                                     <left>
                                         <VBox BorderPane.alignment="CENTER">
                                             <children>
-                                                <Label fx:id="labelHZ" text="--.-">
+                                                <Label fx:id="labelHZ" text="--.-" textFill="#000000b2">
                                                     <font>
                                                         <Font size="48.0" />
                                                     </font>
@@ -76,7 +76,7 @@
                                                         <Font size="96.0" />
                                                     </font>
                                                 </Label>
-                                                <Label fx:id="labelHD" text="--.-">
+                                                <Label fx:id="labelHD" text="--.-" textFill="#000000b2">
                                                     <font>
                                                         <Font size="48.0" />
                                                     </font>
@@ -89,13 +89,13 @@
                         </VBox>
                     </center>
                     <bottom>
-                        <Label fx:id="loopLbl" text="Label" BorderPane.alignment="CENTER">
+                        <Label fx:id="loopLbl" text="Label" textFill="#000000b2" BorderPane.alignment="CENTER">
                      <font>
                         <Font size="48.0" />
                      </font></Label>
                     </bottom>
                     <top>
-                        <Label fx:id="serialLbl" text="Label" BorderPane.alignment="CENTER">
+                        <Label fx:id="serialLbl" text="Label" textFill="#000000b2" BorderPane.alignment="CENTER">
                      <font>
                         <Font size="48.0" />
                      </font></Label>
