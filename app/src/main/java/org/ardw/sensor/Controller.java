@@ -124,9 +124,9 @@ public class Controller {
                 labelT.setText(format(measure.temperature));
                 labelH.setText(format(measure.humidity));
 
-                dataT.add(new AreaChart.Data<>(time, measure.temperature - 2));
+                dataT.add(new AreaChart.Data<>(time, measure.temperature));
                 zeroT.add(new AreaChart.Data<>(time, zero.temperature));
-                deltaT.add(new AreaChart.Data<>(time, delta.temperature - 1));
+                deltaT.add(new AreaChart.Data<>(time, delta.temperature));
                 float deltaT = delta.temperature - measure.temperature;
                 labelTD.setText(format(deltaT));
 
