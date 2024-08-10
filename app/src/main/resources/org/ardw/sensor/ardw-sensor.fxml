@@ -11,97 +11,99 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<TabPane xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.ardw.sensor.Controller">
-   <tabs>
-      <Tab closable="false" text="Sensor">
-         <content>
-            <BorderPane>
-                <center>
-                    <VBox prefHeight="793.0" prefWidth="746.0">
-                        <children>
-                            <BorderPane>
-                                <center>
-                                    <AreaChart fx:id="chartT" BorderPane.alignment="CENTER">
-                                        <xAxis>
-                                            <NumberAxis side="BOTTOM" />
-                                        </xAxis>
-                                        <yAxis>
-                                            <NumberAxis side="LEFT" />
-                                        </yAxis>
-                                    </AreaChart>
-                                </center>
-                                <left>
-                              <VBox BorderPane.alignment="CENTER">
-                                 <children>
-                                          <Label fx:id="labelTZ" text="11.11">
-                                              <font>
-                                                  <Font size="48.0" />
-                                              </font>
-                                          </Label>
-                                    <Label fx:id="labelT" text="22.22">
-                                       <font>
-                                          <Font size="96.0" />
-                                       </font>
-                                    </Label>
-                                    <Label fx:id="labelTD" text="11.11">
-                                       <font>
-                                          <Font size="48.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
-                              </VBox>
-                                </left>
-                            </BorderPane>
-                            <BorderPane>
-                                <center>
-                                    <AreaChart fx:id="chartH">
-                                        <xAxis>
-                                            <NumberAxis side="BOTTOM" />
-                                        </xAxis>
-                                        <yAxis>
-                                            <NumberAxis side="LEFT" />
-                                        </yAxis>
-                                    </AreaChart>
-                                </center>
-                                <left>
-                              <VBox BorderPane.alignment="CENTER">
-                                 <children>
-                                          <Label fx:id="labelHZ" text="11.11">
-                                              <font>
-                                                  <Font size="48.0" />
-                                              </font>
-                                          </Label>
-                                    <Label fx:id="labelH" text="22.22">
-                                       <font>
-                                          <Font size="96.0" />
-                                       </font>
-                                    </Label>
-                                    <Label fx:id="labelHD" text="11.11">
-                                       <font>
-                                          <Font size="48.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
-                              </VBox>
-                                </left>
-                            </BorderPane>
-                        </children>
-                    </VBox>
-                </center>
-               <bottom>
-                      <Label fx:id="loopLbl" style="-fx-background-color: #999999;" text="Label" BorderPane.alignment="CENTER" />
-               </bottom>
-            </BorderPane>
-         </content>
-      </Tab>
-      <Tab closable="false" text="Misc">
-        <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-               <children>
-                      <TextArea fx:id="console" prefHeight="200.0" />
-               </children>
-            </AnchorPane>
-        </content>
-      </Tab>
-   </tabs>
+<TabPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+         fx:controller="org.ardw.sensor.Controller">
+    <tabs>
+        <Tab closable="false" text="Sensor">
+            <content>
+                <BorderPane>
+                    <center>
+                        <VBox prefHeight="793.0" prefWidth="746.0">
+                            <children>
+                                <BorderPane>
+                                    <center>
+                                        <AreaChart fx:id="chartT" BorderPane.alignment="CENTER">
+                                            <xAxis>
+                                                <NumberAxis side="BOTTOM"/>
+                                            </xAxis>
+                                            <yAxis>
+                                                <NumberAxis side="LEFT"/>
+                                            </yAxis>
+                                        </AreaChart>
+                                    </center>
+                                    <left>
+                                        <VBox BorderPane.alignment="CENTER">
+                                            <children>
+                                                <Label fx:id="labelTZ" text="11.11">
+                                                    <font>
+                                                        <Font size="48.0"/>
+                                                    </font>
+                                                </Label>
+                                                <Label fx:id="labelT" text="22.22">
+                                                    <font>
+                                                        <Font size="96.0"/>
+                                                    </font>
+                                                </Label>
+                                                <Label fx:id="labelTD" text="11.11">
+                                                    <font>
+                                                        <Font size="48.0"/>
+                                                    </font>
+                                                </Label>
+                                            </children>
+                                        </VBox>
+                                    </left>
+                                </BorderPane>
+                                <BorderPane>
+                                    <center>
+                                        <AreaChart fx:id="chartH">
+                                            <xAxis>
+                                                <NumberAxis side="BOTTOM"/>
+                                            </xAxis>
+                                            <yAxis>
+                                                <NumberAxis side="LEFT"/>
+                                            </yAxis>
+                                        </AreaChart>
+                                    </center>
+                                    <left>
+                                        <VBox BorderPane.alignment="CENTER">
+                                            <children>
+                                                <Label fx:id="labelHZ" text="11.11">
+                                                    <font>
+                                                        <Font size="48.0"/>
+                                                    </font>
+                                                </Label>
+                                                <Label fx:id="labelH" text="22.22">
+                                                    <font>
+                                                        <Font size="96.0"/>
+                                                    </font>
+                                                </Label>
+                                                <Label fx:id="labelHD" text="11.11">
+                                                    <font>
+                                                        <Font size="48.0"/>
+                                                    </font>
+                                                </Label>
+                                            </children>
+                                        </VBox>
+                                    </left>
+                                </BorderPane>
+                            </children>
+                        </VBox>
+                    </center>
+                    <bottom>
+                        <Label fx:id="loopLbl" style="-fx-background-color: #999999;" text="Label"
+                               BorderPane.alignment="CENTER"/>
+                    </bottom>
+                </BorderPane>
+            </content>
+        </Tab>
+        <Tab closable="false" text="Misc">
+            <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                    <children>
+                        <TextArea fx:id="console" prefHeight="200.0"/>
+                    </children>
+                </AnchorPane>
+            </content>
+        </Tab>
+    </tabs>
 </TabPane>
