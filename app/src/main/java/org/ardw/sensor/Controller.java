@@ -66,12 +66,12 @@ public class Controller {
         deltaT = serieTD.getData();
         deltaH = serieHD.getData();
 
-        chartT.getData().add(serieT);
         chartT.getData().add(serieTZ);
+        chartT.getData().add(serieT);
         chartT.getData().add(serieTD);
 
-        chartH.getData().add(serieH);
         chartH.getData().add(serieHZ);
+        chartH.getData().add(serieH);
         chartH.getData().add(serieHD);
 
         setupAxis(chartT, 20, 32, 1);
@@ -124,9 +124,9 @@ public class Controller {
                 labelT.setText(format(measure.temperature));
                 labelH.setText(format(measure.humidity));
 
-                dataT.add(new AreaChart.Data<>(time, measure.temperature));
+                dataT.add(new AreaChart.Data<>(time, measure.temperature - 2));
                 zeroT.add(new AreaChart.Data<>(time, zero.temperature));
-                deltaT.add(new AreaChart.Data<>(time, delta.temperature));
+                deltaT.add(new AreaChart.Data<>(time, delta.temperature - 1));
                 float deltaT = delta.temperature - measure.temperature;
                 labelTD.setText(format(deltaT));
 
