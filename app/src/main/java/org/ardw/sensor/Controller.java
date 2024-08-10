@@ -23,7 +23,7 @@ public class Controller {
     AreaChart<Number, Number> chartT, chartH;
 
     @FXML
-    Label labelT, labelH, labelTZ, labelHZ, labelTD, labelHD, loopLbl;
+    Label serialLbl, labelT, labelH, labelTZ, labelHZ, labelTD, labelHD, loopLbl;
 
     @FXML
     TextArea console;
@@ -35,6 +35,7 @@ public class Controller {
     LinkedList<Measure> list = new LinkedList<>();
 
     int count;
+    private ArdwloopModel model;
 
     public void start() {
         log("Java version is " + System.getProperty("java.version"));
@@ -78,7 +79,7 @@ public class Controller {
         setupAxis(chartH, 30, 90, 2);
 
         IArdwProgram program = new Program();
-        ArdwloopModel model = ArdwloopStarter.get().start(program);
+        model = ArdwloopStarter.get().start(program);
 
         new AppThread(this).start();
     }
@@ -94,6 +95,10 @@ public class Controller {
     }
 
     void process() {
+
+        Platform.runLater(() -> {
+            serialLbl.setText(model.serialMdl.status.get());
+        });
 
         if (Measure.measures.isEmpty()) {
             return;

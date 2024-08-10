@@ -91,6 +91,9 @@
                     <bottom>
                         <Label fx:id="loopLbl" style="-fx-background-color: #999999;" text="Label" BorderPane.alignment="CENTER" />
                     </bottom>
+                    <top>
+                        <Label fx:id="serialLbl" style="-fx-background-color: #999999;" text="Label" BorderPane.alignment="CENTER" />
+                    </top>
                 </BorderPane>
             </content>
         </Tab>
