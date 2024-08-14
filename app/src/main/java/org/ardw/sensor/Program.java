@@ -64,7 +64,7 @@ class Program implements IArdwProgram {
 
     @Override
     public int getReadDelayMs() {
-        return 0;
+        return 99;
     }
 
     @Override
