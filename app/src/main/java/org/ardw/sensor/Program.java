@@ -9,7 +9,7 @@ import org.llschall.ardwloop.structure.data.SetupData;
 
 class Program implements IArdwProgram {
 
-    private Model model;
+    private final Model model;
 
     Program(Model model) {
         this.model = model;
@@ -35,7 +35,7 @@ class Program implements IArdwProgram {
                 av, 0, 0, 0, 0,
                 0, 0, 0, 0, 0);
 
-        StructureTimer.get().delayMs(2_000);
+        StructureTimer.get().delayMs(3_000);
 
         return new LoopData(data);
     }

@@ -18,7 +18,7 @@ import java.time.format.DateTimeFormatter;
 
 public class Controller {
 
-    final Model model = new Model(600);
+    final Model model = new Model(400);
 
     @FXML
     AreaChart<Number, Number> chartT, chartH;

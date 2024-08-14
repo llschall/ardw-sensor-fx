@@ -15,7 +15,7 @@ public class AppThread extends Thread {
             controller.process();
 
             try {
-                Thread.sleep(2_000);
+                Thread.sleep(1_000);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
