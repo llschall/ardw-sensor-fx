@@ -1,10 +1,7 @@
 package org.ardw.sensor;
 
-import java.util.concurrent.ConcurrentLinkedQueue;
-
 class Measure {
-
-
+    
     final long timeMs;
 
     final float temperature;

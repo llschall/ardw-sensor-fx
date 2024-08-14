@@ -1,9 +1,12 @@
 package org.ardw.sensor;
 
+import org.jetbrains.annotations.NotNull;
+
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
-class Model {
+class Model implements Iterable<Measure> {
 
     private final int lastCnt;
 
@@ -44,4 +47,19 @@ class Model {
         return list.peek();
     }
 
+    @NotNull
+    @Override
+    public Iterator<Measure> iterator() {
+        return new Iterator<>() {
+            @Override
+            public boolean hasNext() {
+                return !measures.isEmpty();
+            }
+
+            @Override
+            public Measure next() {
+                return measures.remove();
+            }
+        };
+    }
 }

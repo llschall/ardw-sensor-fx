@@ -9,10 +9,15 @@ public class ModelTest {
     public void testModel() {
 
         Model model = new Model(10);
-
         Assertions.assertTrue(model.isEmpty());
 
+        model.add(new Measure(10, 10, 10));
 
+        for (Measure measure : model) {
+            Assertions.assertEquals(10, measure.timeMs);
+        }
+
+        Assertions.assertTrue(model.isEmpty());
     }
 
 }
