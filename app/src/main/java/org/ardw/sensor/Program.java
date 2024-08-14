@@ -9,6 +9,12 @@ import org.llschall.ardwloop.structure.data.SetupData;
 
 class Program implements IArdwProgram {
 
+    private Model model;
+
+    Program(Model model) {
+        this.model = model;
+    }
+
     @Override
     public SetupData ardwSetup(SetupData setupData) {
         return new SetupData(new SerialData(0,
@@ -43,7 +49,7 @@ class Program implements IArdwProgram {
         float t = temp / 10;
         float h = humd / 10;
 
-        Measure.measures.add(new Measure(System.currentTimeMillis(), t, h));
+        model.measures.add(new Measure(System.currentTimeMillis(), t, h));
     }
 
     @Override

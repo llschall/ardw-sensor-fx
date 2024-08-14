@@ -12,14 +12,14 @@ import org.llschall.ardwloop.IArdwProgram;
 import org.llschall.ardwloop.structure.model.ArdwloopModel;
 
 import java.lang.management.ManagementFactory;
-import java.text.DateFormat;
 import java.text.DecimalFormat;
-import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.LinkedList;
 
 public class Controller {
+
+    final Model model = new Model();
 
     @FXML
     AreaChart<Number, Number> chartT, chartH;
@@ -39,7 +39,7 @@ public class Controller {
     LinkedList<Measure> list = new LinkedList<>();
 
     int count;
-    private ArdwloopModel model;
+    private ArdwloopModel ardwMdl;
 
     public void start() {
         log("Java version is " + System.getProperty("java.version"));
@@ -82,8 +82,8 @@ public class Controller {
         setupAxis(chartT, 20, 32, 1);
         setupAxis(chartH, 30, 70, 2);
 
-        IArdwProgram program = new Program();
-        model = ArdwloopStarter.get().start(program);
+        IArdwProgram program = new Program(model);
+        ardwMdl = ArdwloopStarter.get().start(program);
 
         new AppThread(this).start();
     }
@@ -106,25 +106,25 @@ public class Controller {
 
         Platform.runLater(() -> {
             if (zero == null) {
-                serialLbl.setText(model.serialMdl.status.get());
+                serialLbl.setText(ardwMdl.serialMdl.status.get());
             }
         });
 
-        if (Measure.measures.isEmpty()) {
+        if (model.measures.isEmpty()) {
             return;
         }
 
         if (zero == null) {
             log("Zero is now.");
-            zero = Measure.measures.peek();
+            zero = model.measures.peek();
             Platform.runLater(() -> {
                 labelTZ.setText(format(zero.temperature));
                 labelHZ.setText(format(zero.humidity));
             });
         }
-        while (!Measure.measures.isEmpty()) {
+        while (!model.measures.isEmpty()) {
 
-            Measure measure = Measure.measures.remove();
+            Measure measure = model.measures.remove();
             list.addLast(measure);
             while (list.size() > 1000) {
                 list.removeFirst();
