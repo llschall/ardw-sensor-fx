@@ -43,7 +43,7 @@ class Model implements Iterable<Measure> {
         }
     }
 
-    Measure listPeek() {
+    Measure delta() {
         return list.peek();
     }
 
@@ -53,12 +53,12 @@ class Model implements Iterable<Measure> {
         return new Iterator<>() {
             @Override
             public boolean hasNext() {
-                return !measures.isEmpty();
+                return !Model.this.isEmpty();
             }
 
             @Override
             public Measure next() {
-                return measures.remove();
+                return Model.this.remove();
             }
         };
     }

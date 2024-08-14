@@ -15,7 +15,6 @@ import java.lang.management.ManagementFactory;
 import java.text.DecimalFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.LinkedList;
 
 public class Controller {
 
@@ -120,10 +119,9 @@ public class Controller {
                 labelHZ.setText(format(zero.humidity));
             });
         }
-        while (!model.isEmpty()) {
+        for (Measure measure : model) {
 
-            Measure measure = model.remove();
-            Measure delta = model.listPeek();
+            Measure delta = model.delta();
 
             long time = (measure.timeMs - zero.timeMs) / 1000;
 
