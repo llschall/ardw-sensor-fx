@@ -5,9 +5,15 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 
 class Model {
 
+    private final int lastCnt;
+
     private final ConcurrentLinkedQueue<Measure> measures = new ConcurrentLinkedQueue<>();
 
     private final LinkedList<Measure> list = new LinkedList<>();
+
+    public Model(int lastCnt) {
+        this.lastCnt = lastCnt;
+    }
 
     boolean isEmpty() {
         return measures.isEmpty();
@@ -39,5 +45,9 @@ class Model {
 
     Measure listPeek() {
         return list.peek();
+    }
+
+    int lastCount() {
+        return lastCnt;
     }
 }

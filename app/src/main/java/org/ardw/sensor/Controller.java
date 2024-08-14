@@ -19,7 +19,7 @@ import java.util.LinkedList;
 
 public class Controller {
 
-    final Model model = new Model();
+    final Model model = new Model(600);
 
     @FXML
     AreaChart<Number, Number> chartT, chartH;
@@ -124,7 +124,7 @@ public class Controller {
 
             Measure measure = model.remove();
             model.addLast(measure);
-            while (model.size() > 1000) {
+            while (model.size() > model.lastCount()) {
                 model.removeFirst();
             }
 
