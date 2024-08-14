@@ -36,8 +36,6 @@ public class Controller {
 
     ObservableList<AreaChart.Data<Number, Number>> dataT, dataH, zeroT, zeroH, deltaT, deltaH;
 
-    LinkedList<Measure> list = new LinkedList<>();
-
     int count;
     private ArdwloopModel ardwMdl;
 
@@ -125,12 +123,12 @@ public class Controller {
         while (!model.isEmpty()) {
 
             Measure measure = model.remove();
-            list.addLast(measure);
-            while (list.size() > 1000) {
-                list.removeFirst();
+            model.addLast(measure);
+            while (model.size() > 1000) {
+                model.removeFirst();
             }
 
-            Measure delta = list.peek();
+            Measure delta = model.listPeek();
 
             long time = (measure.timeMs - zero.timeMs) / 1000;
 
