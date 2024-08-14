@@ -24,7 +24,9 @@ class Model {
     }
 
     Measure remove() {
-        return measures.remove();
+        Measure measure = measures.remove();
+        addLast(measure);
+        return measure;
     }
 
     void add(Measure measure) {
@@ -33,21 +35,13 @@ class Model {
 
     void addLast(Measure measure) {
         list.addLast(measure);
-    }
-
-    int size() {
-        return list.size();
-    }
-
-    void removeFirst() {
-        list.removeFirst();
+        while (list.size() > lastCnt) {
+            list.removeFirst();
+        }
     }
 
     Measure listPeek() {
         return list.peek();
     }
 
-    int lastCount() {
-        return lastCnt;
-    }
 }

@@ -123,11 +123,6 @@ public class Controller {
         while (!model.isEmpty()) {
 
             Measure measure = model.remove();
-            model.addLast(measure);
-            while (model.size() > model.lastCount()) {
-                model.removeFirst();
-            }
-
             Measure delta = model.listPeek();
 
             long time = (measure.timeMs - zero.timeMs) / 1000;
