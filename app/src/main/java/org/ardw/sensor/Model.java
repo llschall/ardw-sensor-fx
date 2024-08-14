@@ -4,7 +4,22 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 
 class Model {
 
-    final ConcurrentLinkedQueue<Measure> measures = new ConcurrentLinkedQueue<>();
+    private final ConcurrentLinkedQueue<Measure> measures = new ConcurrentLinkedQueue<>();
 
 
+    boolean isEmpty() {
+        return measures.isEmpty();
+    }
+
+    Measure peek() {
+        return measures.peek();
+    }
+
+    Measure remove() {
+        return measures.remove();
+    }
+
+    void add(Measure measure) {
+        measures.add(measure);
+    }
 }

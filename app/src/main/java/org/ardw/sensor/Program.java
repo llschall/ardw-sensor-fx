@@ -49,7 +49,7 @@ class Program implements IArdwProgram {
         float t = temp / 10;
         float h = humd / 10;
 
-        model.measures.add(new Measure(System.currentTimeMillis(), t, h));
+        model.add(new Measure(System.currentTimeMillis(), t, h));
     }
 
     @Override

@@ -110,21 +110,21 @@ public class Controller {
             }
         });
 
-        if (model.measures.isEmpty()) {
+        if (model.isEmpty()) {
             return;
         }
 
         if (zero == null) {
             log("Zero is now.");
-            zero = model.measures.peek();
+            zero = model.peek();
             Platform.runLater(() -> {
                 labelTZ.setText(format(zero.temperature));
                 labelHZ.setText(format(zero.humidity));
             });
         }
-        while (!model.measures.isEmpty()) {
+        while (!model.isEmpty()) {
 
-            Measure measure = model.measures.remove();
+            Measure measure = model.remove();
             list.addLast(measure);
             while (list.size() > 1000) {
                 list.removeFirst();
