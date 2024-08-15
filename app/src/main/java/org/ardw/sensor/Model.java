@@ -14,8 +14,8 @@ class Model implements Iterable<Measure> {
 
     private final LinkedList<Measure> list = new LinkedList<>();
 
-    public Model(int lastCnt) {
-        this.lastCnt = lastCnt;
+    public Model(int deltaCnt) {
+        this.lastCnt = deltaCnt;
     }
 
     boolean isFakeDelta = true;
