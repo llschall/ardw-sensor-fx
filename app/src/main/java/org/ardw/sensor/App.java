@@ -14,7 +14,7 @@ public class App extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader loader = new FXMLLoader(App.class.getResource("ardw-sensor.fxml"));
         Scene scene = new Scene(loader.load());
-        scene.getStylesheets().add("style.css");
+        scene.getStylesheets().add("org/ardw/sensor/style.css");
 
         scene.setOnKeyPressed(evt -> {
             if (evt.isAltDown() &&
