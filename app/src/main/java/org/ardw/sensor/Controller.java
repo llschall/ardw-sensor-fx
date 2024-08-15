@@ -122,6 +122,7 @@ public class Controller {
         for (Measure measure : model) {
 
             Measure delta = model.delta();
+            boolean plainDelta = !model.isFakeDelta();
 
             long time = (measure.timeMs - zero.timeMs) / 1000;
 
@@ -146,13 +147,17 @@ public class Controller {
 
                 dataT.add(new AreaChart.Data<>(time, measure.temperature));
                 zeroT.add(new AreaChart.Data<>(time, zero.temperature));
-                deltaT.add(new AreaChart.Data<>(time, delta.temperature));
+                if (plainDelta) {
+                    deltaT.add(new AreaChart.Data<>(time, delta.temperature));
+                }
                 float deltaT = delta.temperature - measure.temperature;
                 labelTD.setText(format(deltaT));
 
                 dataH.add(new AreaChart.Data<>(time, measure.humidity));
                 zeroH.add(new AreaChart.Data<>(time, zero.humidity));
-                deltaH.add(new AreaChart.Data<>(time, delta.humidity));
+                if (plainDelta) {
+                    deltaH.add(new AreaChart.Data<>(time, delta.humidity));
+                }
                 float deltaH = delta.humidity - measure.humidity;
                 labelHD.setText(format(deltaH));
 

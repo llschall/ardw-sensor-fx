@@ -40,28 +40,35 @@ public class ModelTest {
 
         assertEquals(100, iterator.next().timeMs);
         assertEquals(100, model.delta().timeMs);
+        assertTrue(model.isFakeDelta());
 
         assertEquals(101, iterator.next().timeMs);
         assertEquals(100, model.delta().timeMs);
+        assertTrue(model.isFakeDelta());
 
         assertEquals(102, iterator.next().timeMs);
         assertEquals(100, model.delta().timeMs);
+        assertTrue(model.isFakeDelta());
 
         assertEquals(103, iterator.next().timeMs);
         assertEquals(101, model.delta().timeMs);
+        assertFalse(model.isFakeDelta());
 
         model.add(new Measure(105, 20, 60));
         model.add(new Measure(106, 20, 60));
 
         assertEquals(104, iterator.next().timeMs);
         assertEquals(102, model.delta().timeMs);
+        assertFalse(model.isFakeDelta());
 
         assertEquals(105, iterator.next().timeMs);
         assertEquals(103, model.delta().timeMs);
+        assertFalse(model.isFakeDelta());
 
         assertEquals(106, iterator.next().timeMs);
         assertEquals(104, model.delta().timeMs);
-        
+        assertFalse(model.isFakeDelta());
+
         assertFalse(iterator.hasNext());
 
         model.add(new Measure(107, 20, 60));

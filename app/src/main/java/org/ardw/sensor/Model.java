@@ -18,6 +18,8 @@ class Model implements Iterable<Measure> {
         this.lastCnt = lastCnt;
     }
 
+    boolean isFakeDelta = true;
+
     boolean isEmpty() {
         return measures.isEmpty();
     }
@@ -26,7 +28,7 @@ class Model implements Iterable<Measure> {
         return measures.peek();
     }
 
-    Measure remove() {
+    private Measure remove() {
         Measure measure = measures.remove();
         addLast(measure);
         return measure;
@@ -36,11 +38,16 @@ class Model implements Iterable<Measure> {
         measures.add(measure);
     }
 
-    void addLast(Measure measure) {
+    private void addLast(Measure measure) {
         list.addLast(measure);
         while (list.size() > lastCnt) {
+            isFakeDelta = false;
             list.removeFirst();
         }
+    }
+
+    boolean isFakeDelta() {
+        return isFakeDelta;
     }
 
     Measure delta() {
