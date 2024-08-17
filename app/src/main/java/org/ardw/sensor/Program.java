@@ -42,7 +42,6 @@ class Program implements IArdwProgram {
 
     private void update(float temp, float humd) {
         if (temp == 0) {
-            System.out.println("*");
             return;
         }
 

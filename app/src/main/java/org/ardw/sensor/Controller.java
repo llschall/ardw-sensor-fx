@@ -76,7 +76,7 @@ public class Controller {
         chartH.getData().add(serieH);
         chartH.getData().add(serieHD);
 
-        setupAxis(chartT, 20, 32, 1);
+        setupAxis(chartT, 20, 32, 0.5);
         setupAxis(chartH, 30, 70, 2);
 
         IArdwProgram program = new Program(model);
@@ -85,7 +85,7 @@ public class Controller {
         ardwMdl = ArdwloopStarter.get().start(program, appLoop);
     }
 
-    void setupAxis(AreaChart<Number, Number> chart, int min, int max, int tick) {
+    void setupAxis(AreaChart<Number, Number> chart, int min, int max, double tick) {
         NumberAxis xAxis = (NumberAxis) chart.getXAxis();
         xAxis.setAutoRanging(false);
         xAxis.setUpperBound(99);
