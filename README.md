@@ -39,3 +39,4 @@ https://github.com/llschall/ardw-sensor-fx/blob/main/ino/ardw-sensor-fx/ardw-sen
 It might be necessary to firstly import the **Ardwloop** and **DHT** libraries to your Arduino IDE to make the
 compilation successful.
 
+![Overview](https://github.com/llschall/ardw-sensor-fx/blob/main/doc/ardwloop.png?raw=true)
