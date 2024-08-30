@@ -15,6 +15,7 @@ class Program implements IArdwProgram {
         this.model = model;
     }
 
+    // See https://github.com/llschall/ardwloop/wiki#ardwsetup
     @Override
     public SetupData ardwSetup(SetupData setupData) {
         return new SetupData(new SerialData(0,
@@ -22,6 +23,7 @@ class Program implements IArdwProgram {
                 0, 0, 0, 0, 0));
     }
 
+    // See https://github.com/llschall/ardwloop/wiki#ardwloop
     @Override
     public LoopData ardwLoop(LoopData in) {
         SerialVector b = in.getData().b;

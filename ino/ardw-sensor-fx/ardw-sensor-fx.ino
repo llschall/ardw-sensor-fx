@@ -1,5 +1,6 @@
 
 
+// https://github.com/llschall/ardwloop
 // Version 0.1.4
 #include <Ardwloop.h>
 
@@ -15,10 +16,13 @@ void setup() {
 
   dht.begin();
 
+  // https://github.com/llschall/ardwloop/wiki#ardw_setup
   ardw_setup();
 }
 
 void loop() {
+
+  // https://github.com/llschall/ardwloop/wiki#ardw_loop
   ardw_loop();
 
   int v = ardw_r()->a.v;
