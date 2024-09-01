@@ -8,6 +8,11 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 
 class Model implements Iterable<Measure> {
 
+    final static int TEMP_MIN = 20;
+    final static int TEMP_MAX = 32;
+    final static int HUMD_MIN = 20;
+    final static int HUMD_MAX = 80;
+
     private final int lastCnt;
 
     private final ConcurrentLinkedQueue<Measure> measures = new ConcurrentLinkedQueue<>();

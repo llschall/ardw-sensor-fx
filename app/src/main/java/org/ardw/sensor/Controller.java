@@ -76,8 +76,8 @@ public class Controller {
         chartH.getData().add(serieH);
         chartH.getData().add(serieHD);
 
-        setupAxis(chartT, 20, 32, 0.5);
-        setupAxis(chartH, 30, 70, 2);
+        setupAxis(chartT, Model.TEMP_MIN, Model.TEMP_MAX, 0.5);
+        setupAxis(chartH, Model.HUMD_MIN, Model.HUMD_MAX, 2);
 
         IArdwProgram program = new Program(model);
         AppLoop appLoop = new AppLoop(this);
