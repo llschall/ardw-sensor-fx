@@ -2,10 +2,9 @@ package org.ardw.sensor;
 
 import org.llschall.ardwloop.IArdwProgram;
 import org.llschall.ardwloop.structure.StructureTimer;
-import org.llschall.ardwloop.structure.data.LoopData;
-import org.llschall.ardwloop.structure.data.SerialData;
-import org.llschall.ardwloop.structure.data.SerialVector;
-import org.llschall.ardwloop.structure.data.SetupData;
+import org.llschall.ardwloop.value.SerialData;
+import org.llschall.ardwloop.value.V;
+
 
 class Program implements IArdwProgram {
 
@@ -17,29 +16,23 @@ class Program implements IArdwProgram {
 
     // See https://github.com/llschall/ardwloop/wiki#ardwsetup
     @Override
-    public SetupData ardwSetup(SetupData setupData) {
-        return new SetupData(new SerialData(0,
-                0, 0, 0, 0, 0,
-                0, 0, 0, 0, 0));
+    public SerialData ardwSetup(SerialData setupData) {
+        return new SerialData(0, 0, 0, 0, 0);
     }
 
     // See https://github.com/llschall/ardwloop/wiki#ardwloop
     @Override
-    public LoopData ardwLoop(LoopData in) {
-        SerialVector b = in.getData().b;
+    public SerialData ardwLoop(SerialData in) {
+        V b = in.b;
         float humd = b.v;
         float temp = b.w;
 
         update(temp, humd);
 
         int av = 0;
-        SerialData data = new SerialData(0,
-                av, 0, 0, 0, 0,
-                0, 0, 0, 0, 0);
-
+        SerialData data = new SerialData(av, 0, 0, 0, 0);
         StructureTimer.get().delayMs(3_000);
-
-        return new LoopData(data);
+        return data;
     }
 
     private void update(float temp, float humd) {
@@ -51,25 +44,5 @@ class Program implements IArdwProgram {
         float h = humd / 10;
 
         model.add(new Measure(System.currentTimeMillis(), t, h));
-    }
-
-    @Override
-    public int getRc() {
-        return 2;
-    }
-
-    @Override
-    public int getSc() {
-        return 2;
-    }
-
-    @Override
-    public int getReadDelayMs() {
-        return 99;
-    }
-
-    @Override
-    public int getPostDelayMs() {
-        return 20000;
     }
 }

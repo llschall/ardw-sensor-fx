@@ -82,7 +82,7 @@ public class Controller {
         IArdwProgram program = new Program(model);
         AppLoop appLoop = new AppLoop(this);
 
-        ardwMdl = ArdwloopStarter.get().start(program, appLoop);
+        ardwMdl = ArdwloopStarter.get().start(program, 9600, appLoop);
     }
 
     void setupAxis(AreaChart<Number, Number> chart, int min, int max, double tick) {

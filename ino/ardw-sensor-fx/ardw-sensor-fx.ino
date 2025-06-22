@@ -1,7 +1,7 @@
 
 
 // https://github.com/llschall/ardwloop
-// Version 0.1.5
+// Version 0.3.3
 #include <Ardwloop.h>
 
 // https://github.com/adafruit/DHT-sensor-library
@@ -17,7 +17,7 @@ void setup() {
   dht.begin();
 
   // https://github.com/llschall/ardwloop/wiki#ardw_setup
-  ardw_setup();
+  ardw_setup(9600);
 }
 
 void loop() {
