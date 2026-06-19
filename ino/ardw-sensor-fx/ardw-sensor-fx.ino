@@ -5,7 +5,7 @@
 #include <Ardwloop.h>
 
 // https://github.com/adafruit/DHT-sensor-library
-// Version 1.4.6
+// Version 1.4.7
 #include "DHT.h"
 
 // The data pin of the DHT sensor is connected to the Arduino pin 4
