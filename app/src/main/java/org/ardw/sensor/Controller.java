@@ -115,8 +115,8 @@ public class Controller {
             log("Zero is now.");
             zero = model.peek();
             Platform.runLater(() -> {
-                labelTZ.setText(format(zero.temperature));
-                labelHZ.setText(format(zero.humidity));
+                labelTZ.setText(format(zero.temperature()));
+                labelHZ.setText(format(zero.humidity()));
             });
         }
         for (Measure measure : model) {
@@ -124,7 +124,7 @@ public class Controller {
             Measure delta = model.delta();
             boolean plainDelta = !model.isFakeDelta();
 
-            long time = (measure.timeMs - zero.timeMs) / 1000;
+            long time = (measure.timeMs() - zero.timeMs()) / 1000;
 
             if (!xAutoRanging && time > 80) {
                 Platform.runLater(() -> {
@@ -142,23 +142,23 @@ public class Controller {
 
                 loopLbl.setText("#" + count++);
 
-                labelT.setText(format(measure.temperature));
-                labelH.setText(format(measure.humidity));
+                labelT.setText(format(measure.temperature()));
+                labelH.setText(format(measure.humidity()));
 
-                dataT.add(new AreaChart.Data<>(time, measure.temperature));
-                zeroT.add(new AreaChart.Data<>(time, zero.temperature));
+                dataT.add(new AreaChart.Data<>(time, measure.temperature()));
+                zeroT.add(new AreaChart.Data<>(time, zero.temperature()));
                 if (plainDelta) {
-                    deltaT.add(new AreaChart.Data<>(time, delta.temperature));
+                    deltaT.add(new AreaChart.Data<>(time, delta.temperature()));
                 }
-                float deltaT = delta.temperature - measure.temperature;
+                float deltaT = delta.temperature() - measure.temperature();
                 labelTD.setText(format(deltaT));
 
-                dataH.add(new AreaChart.Data<>(time, measure.humidity));
-                zeroH.add(new AreaChart.Data<>(time, zero.humidity));
+                dataH.add(new AreaChart.Data<>(time, measure.humidity()));
+                zeroH.add(new AreaChart.Data<>(time, zero.humidity()));
                 if (plainDelta) {
-                    deltaH.add(new AreaChart.Data<>(time, delta.humidity));
+                    deltaH.add(new AreaChart.Data<>(time, delta.humidity()));
                 }
-                float deltaH = delta.humidity - measure.humidity;
+                float deltaH = delta.humidity() - measure.humidity();
                 labelHD.setText(format(deltaH));
 
             });
