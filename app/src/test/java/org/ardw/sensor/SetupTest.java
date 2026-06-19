@@ -15,7 +15,7 @@ public class SetupTest {
 
     @Test
     public void checkArdwloop() {
-        Assertions.assertEquals("0.3.3", ArdwloopStarter.VERSION);
+        Assertions.assertEquals("0.4.0", ArdwloopStarter.VERSION);
         Assertions.assertEquals(1001, ArdwloopStarter.VERSION_INT);
     }
 }

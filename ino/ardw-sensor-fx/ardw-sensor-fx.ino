@@ -1,7 +1,7 @@
 
 
 // https://github.com/llschall/ardwloop
-// Version 0.3.3
+// Version 0.4.0
 #include <Ardwloop.h>
 
 // https://github.com/adafruit/DHT-sensor-library
